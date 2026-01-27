@@ -1,0 +1,12 @@
+/* Default logo size (desktop) */
+.logo {
+  width: 270px;
+  height: auto;
+}
+
+/* Smaller logo for mobile */
+@media (max-width: 768px) {
+  .logo {
+    width: 200px; /* adjust smaller for mobile */
+  }
+}
