@@ -48,7 +48,7 @@ export default function Header() {
                 clip-rule="evenodd"
               ></path>
             </svg>
-            <span className="text-white text-xl">🇺🇸</span>
+            <span className="text-white text-sm">US</span>
           </div>
 
           {/* Right: Links (hidden on mobile) */}
