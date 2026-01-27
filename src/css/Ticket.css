@@ -82,19 +82,19 @@
   border-bottom-right-radius: 15px;
 }
 
-section {
+.bottom-section {
   background-color: white;
   padding: 50px 30px 0px !important;
 }
 
-section div {
+.bottom-section div {
   margin: 20px 0px !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-section a {
+.bottom-section a {
   text-decoration: none;
   color: #026cdf;
 }

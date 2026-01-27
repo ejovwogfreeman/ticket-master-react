@@ -86,7 +86,7 @@ const Ticket = () => {
                     </p>
                   </div>
                 </div>
-                <section>
+                <section class="bottom-section">
                   <div>
                     <img src={btn} alt="button-img" width="100%" />
                   </div>
@@ -129,7 +129,7 @@ const Ticket = () => {
                     </p>
                   </div>
                 </div>
-                <section>
+                <section class="bottom-section">
                   <div>
                     <img src={btn} alt="button-img" width="100%" />
                   </div>
