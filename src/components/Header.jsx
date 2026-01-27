@@ -131,7 +131,7 @@ export default function Header() {
       <div className="bg-blue-600 py-6">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row">
-            <div className="flex flex-1">
+            <div className="flex flex-1" style={{ background: "white" }}>
               <div className="relative flex-1 border border-gray-300">
                 <MapPin
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -149,13 +149,11 @@ export default function Header() {
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                   size={20}
                 />
-                <select className="w-full pl-10 pr-4 py-3 focus:outline-none text-gray-900">
-                  <option>All Dates</option>
-                  <option>Today</option>
-                  <option>This Weekend</option>
-                  <option>This Week</option>
-                  <option>This Month</option>
-                </select>
+                <input
+                  type="text"
+                  placeholder="All Dates"
+                  className="w-full pl-10 pr-4 py-3 focus:outline-none text-gray-900"
+                />
               </div>
             </div>
 

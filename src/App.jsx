@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {/* <Hero /> */}
       <Categories />
       <FeaturedEvents />
       <Footer />
