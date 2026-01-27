@@ -1,10 +1,13 @@
 import { Search, MapPin, Calendar, Menu, User, X } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import headerbg from "../assets/header.jpg";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const navigate = useNavigate();
 
   const navItems = [
     "Concerts",
@@ -93,7 +96,10 @@ export default function Header() {
 
           {/* Right: Person icon (always visible) */}
           <div className="flex items-center space-x-4">
-            <button className="flex items-center hover:text-blue-200 space-x-2">
+            <button
+              className="flex items-center hover:text-blue-200 space-x-2"
+              onClick={() => navigate("/login")}
+            >
               <User size={20} />
               <span className="hidden md:inline">Sign In/Register</span>
             </button>

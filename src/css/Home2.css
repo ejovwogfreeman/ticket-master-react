@@ -1,0 +1,120 @@
+.home-container {
+  background-color: #1f262d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 200px !important;
+  height: 200px;
+}
+
+.home-container .zip-date {
+  display: flex;
+  align-items: center;
+}
+
+.home-container .zip-date div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  flex: 1;
+  padding: 10px !important;
+}
+
+.home-container .zip-date div svg {
+  color: #155fc8;
+  font-size: 20px;
+  margin-right: 5px !important;
+}
+
+.home-container form {
+  background-color: #35424e;
+  flex: 1;
+  height: 150px;
+  padding: 20px !important;
+}
+
+.home-container form .search {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px !important;
+  border-radius: 3px;
+  margin-top: 20px !important;
+}
+
+.home-container form .search svg {
+  font-size: 20px;
+}
+
+.home-container form .search input {
+  background-color: transparent;
+  width: 95%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  margin-left: 5px !important;
+}
+
+.rush {
+  text-align: left;
+  padding: 0px 200px !important;
+  margin-top: 20px !important;
+}
+
+.rush h3 {
+  color: #155fc8;
+  margin-bottom: 5px !important;
+}
+
+.categories {
+  padding: 0px 200px !important;
+  margin-top: 20px !important;
+}
+
+.categories h3 {
+  text-align: left;
+  color: #155fc8;
+  margin-bottom: 5px !important;
+}
+
+.cat {
+  display: grid;
+  grid-gap: 7px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cat img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+@media screen and (max-width: 960px) {
+  .home-container {
+    padding: 0px 10px !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .home-container {
+    height: 150px;
+  }
+  .home-container .zip-date div {
+    padding: 5px !important;
+  }
+  .home-container form {
+    height: 100px;
+    padding: 10px !important;
+  }
+  .rush {
+    padding: 0px 10px !important;
+  }
+  .categories {
+    padding: 0px 10px !important;
+  }
+  .cat {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

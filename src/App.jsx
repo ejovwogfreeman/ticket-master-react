@@ -1,17 +1,24 @@
-import Header from "./components/Header";
-import FeaturedEvents from "./components/FeaturedEvents";
-import Categories from "./components/Categories";
-import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Create from "./pages/Create";
+import Login from "./pages/Login";
+import Ticket from "./pages/Ticket";
+import Tickets from "./pages/Tickets";
 import "./App.css";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
-      <Categories />
-      <FeaturedEvents />
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/ticket/:id" element={<Ticket />} />
+          <Route path="/tickets" element={<Tickets />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
