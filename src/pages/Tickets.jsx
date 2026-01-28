@@ -3,12 +3,26 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import loader from "../assets/loading.gif";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Tickets = () => {
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const authToken = JSON.parse(localStorage.getItem("user")).token;
+  const navigate = useNavigate();
+
+  // ✅ Redirect if no user is logged in
+  useEffect(() => {
+    const user = localStorage.getItem("ticket-admin"); // or "user" if you used that key
+    if (!user) {
+      navigate("/login");
+    }
+  }, [navigate]);
+
+  // ✅ Only parse token if user exists
+  const user = JSON.parse(localStorage.getItem("ticket-admin") || "null");
+  const authToken = user?.token;
+
   const config = {
     headers: {
       Authorization: `Bearer ${authToken}`,
@@ -19,7 +33,7 @@ const Tickets = () => {
     setLoading(true);
     try {
       await axios.delete(
-        `https://ticket-website.onrender.com/api/ticket/delete/${id}`,
+        `http://localhost/ticket_website_api/delete_ticket?id=${id}`,
         config,
       );
       toast.success("TICKET DELETED SUCCESSFULLY");
@@ -35,7 +49,7 @@ const Tickets = () => {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "https://ticket-website.onrender.com/api/ticket/",
+          "http://localhost/ticket_website_api/get_tickets",
         );
         console.log(response.data);
         setTickets(response.data);
@@ -49,8 +63,8 @@ const Tickets = () => {
 
   const findTicketById = (id) => {
     for (const ticket of tickets) {
-      if (ticket._id === id) {
-        return "https://ticketwebsite.netlify.app/ticket/" + ticket._id;
+      if (ticket.id === id) {
+        return "http://localhost:5173/ticket/" + ticket.id;
       }
     }
     return null;
@@ -64,7 +78,7 @@ const Tickets = () => {
         {tickets.length > 0 ? (
           <>
             {[...tickets].reverse().map((ticket) => (
-              <li key={ticket._id}>
+              <li key={ticket.id}>
                 <div className="cont">
                   <div className="img-box">
                     <div className="spans">
@@ -72,7 +86,7 @@ const Tickets = () => {
                       <span> {ticket.artist}</span>
                     </div>
                     <button
-                      onClick={() => handleDelete(ticket._id)}
+                      onClick={() => handleDelete(ticket.id)}
                       disabled={loading}
                       style={{
                         background: loading
@@ -84,7 +98,7 @@ const Tickets = () => {
                     </button>
                   </div>
                   <div className="clipboard">
-                    <span>{findTicketById(ticket._id)}</span>
+                    <span>{findTicketById(ticket.id)}</span>
                   </div>
                 </div>
               </li>
@@ -93,13 +107,13 @@ const Tickets = () => {
         ) : (
           <img
             src={loader}
-            alt=""
+            alt="Loading..."
             style={{
               position: "fixed",
-              top: "0px",
-              left: "0px",
-              width: "100%",
-              height: "100vh",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)", // centers both horizontally and vertically
+              zIndex: 9999, // ensures it’s on top of other content
             }}
           />
         )}

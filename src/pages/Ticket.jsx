@@ -32,9 +32,9 @@ const Ticket = () => {
 
   useEffect(() => {
     axios
-      .get(`https://ticket-website.onrender.com/api/ticket/${params.id}`)
+      .get(`http://localhost/ticket_website_api/get_ticket?id=${params.id}`)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setTicket(response.data);
       })
       .catch((error) => {
@@ -46,11 +46,14 @@ const Ticket = () => {
     <div>
       {ticket ? (
         <div>
-          <nav>
-            <Link to="/" className="icon">
-              <MdClose />
-            </Link>
+          <nav id="ticket-nav">
+            <p style={{ marginTop: "-25px" }}>
+              <Link to="/" className="icon">
+                <MdClose />
+              </Link>
+            </p>
             <p>My Tickets</p>
+            <p></p>
           </nav>
           <div className="ticket-container">
             <div className="tickets" onScroll={handleScroll}>
@@ -64,17 +67,19 @@ const Ticket = () => {
                   <p>
                     ROW
                     <br />
-                    <strong>{ticket.row.split(",")[0]}</strong>
+                    <strong>
+                      {ticket.row_num && ticket.row_num.split(",")[0]}
+                    </strong>
                   </p>
                   <p>
                     SEAT <br />
-                    <strong>{ticket.seat.split(",")[0]}</strong>
+                    <strong>{ticket.seat && ticket.seat.split(",")[0]}</strong>
                   </p>
                 </div>
                 <div className="image-container">
                   <div className="bg"></div>
                   <img
-                    src={`https://ticket-website.onrender.com/api/files/${ticket.image[0].link}`}
+                    src={`http://localhost/ticket_website_api/get_ticket_image?id=${ticket.id}`}
                     alt="ticket-pic"
                   />
                   <div className="text">
@@ -86,7 +91,7 @@ const Ticket = () => {
                     </p>
                   </div>
                 </div>
-                <section class="bottom-section">
+                <section className="bottom-section">
                   <div>
                     <img src={btn} alt="button-img" width="100%" />
                   </div>
@@ -107,17 +112,19 @@ const Ticket = () => {
                   <p>
                     ROW
                     <br />
-                    <strong>{ticket.row.split(",")[1]}</strong>
+                    <strong>
+                      {ticket.row_num && ticket.row_num.split(",")[1]}
+                    </strong>
                   </p>
                   <p>
                     SEAT <br />
-                    <strong>{ticket.seat.split(",")[1]}</strong>
+                    <strong>{ticket.seat && ticket.seat.split(",")[1]}</strong>
                   </p>
                 </div>
                 <div className="image-container">
                   <div className="bg"></div>
                   <img
-                    src={`https://ticket-website.onrender.com/api/files/${ticket.image[0].link}`}
+                    src={`http://localhost/ticket_website_api/get_ticket_image?id=${ticket.id}`}
                     alt="ticket-pic"
                   />
                   <div className="text">
@@ -129,7 +136,7 @@ const Ticket = () => {
                     </p>
                   </div>
                 </div>
-                <section class="bottom-section">
+                <section className="bottom-section">
                   <div>
                     <img src={btn} alt="button-img" width="100%" />
                   </div>
@@ -163,13 +170,13 @@ const Ticket = () => {
       ) : (
         <img
           src={loader}
-          alt=""
+          alt="Loading..."
           style={{
             position: "fixed",
-            top: "0px",
-            left: "0px",
-            width: "100%",
-            height: "100vh",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)", // centers both horizontally and vertically
+            zIndex: 9999, // ensures it’s on top of other content
           }}
         />
       )}

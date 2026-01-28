@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Form.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo-blue.png";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -24,32 +24,27 @@ const Create = () => {
   const { type, sec, row, seat, artist, title, date, venue, image } =
     ticketData;
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setTicketData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  // ✅ Redirect if user not logged in
+  useEffect(() => {
+    const user = localStorage.getItem("ticket-admin"); // or "user" if you used that key
+    if (!user) {
+      toast.error("Please login first");
+      navigate("/login");
+    }
+  }, [navigate]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setTicketData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleImageChange = (event) => {
-    setTicketData((prevData) => ({
-      ...prevData,
-      image: event.target.files[0],
-    }));
+  const handleImageChange = (e) => {
+    setTicketData((prev) => ({ ...prev, image: e.target.files[0] }));
   };
 
-  const authToken = JSON.parse(localStorage.getItem("user")).token;
-  const config = {
-    headers: {
-      Authorization: `Bearer ${authToken}`,
-      "Content-Type": "multipart/form-data",
-    },
-  };
-
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
-    event.preventDefault();
 
     if (
       !type ||
@@ -65,113 +60,107 @@ const Create = () => {
       setLoading(false);
       return toast.error("PLEASE FILL ALL FIELDS");
     }
+
     const formData = new FormData();
-    formData.append("type", ticketData.type);
-    formData.append("sec", ticketData.sec);
-    formData.append("row", ticketData.row);
-    formData.append("seat", ticketData.seat);
-    formData.append("artist", ticketData.artist);
-    formData.append("title", ticketData.title);
-    formData.append("date", ticketData.date);
-    formData.append("venue", ticketData.venue);
-    formData.append("files", ticketData.image);
+    formData.append("type", type);
+    formData.append("sec", sec);
+    formData.append("row", row);
+    formData.append("seat", seat);
+    formData.append("artist", artist);
+    formData.append("title", title);
+    formData.append("date", date);
+    formData.append("venue", venue);
+    formData.append("image", image); // ✅ Use "image" as key to match PHP
 
     try {
       await axios.post(
-        "https://ticket-website.onrender.com/api/ticket/create",
+        "http://localhost/ticket_website_api/create_ticket",
         formData,
-        config,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
       );
       toast.success("TICKET CREATED SUCCESSFULLY");
       setLoading(false);
-      navigate("/");
+      navigate("/tickets"); // Redirect after creation
     } catch (error) {
       console.error(error);
+      toast.error("Error creating ticket");
       setLoading(false);
     }
   };
+
   return (
     <>
       <Navbar />
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form">
           <img src={logo} alt="" />
-          <label htmlFor="">TYPE</label>
+          <label>TYPE</label>
           <input
             type="text"
             value={type}
             name="type"
             onChange={handleChange}
-            placeholder="Please enter ticket type"
+            placeholder="Ticket type"
           />
-          <label htmlFor="">SEC</label>
+          <label>SEC</label>
           <input
             type="text"
             value={sec}
             name="sec"
             onChange={handleChange}
-            placeholder="Please enter sec"
+            placeholder="Section"
           />
-          <label htmlFor="">ROW</label>
+          <label>ROW (comma separated, e.g 2,3)</label>
           <input
             type="text"
             value={row}
             name="row"
             onChange={handleChange}
-            placeholder="Please enter row"
+            placeholder="Row"
           />
-          <label htmlFor="">SEAT</label>
+          <label>SEAT (comma separated, e.g 2,3)</label>
           <input
             type="text"
             value={seat}
             name="seat"
             onChange={handleChange}
-            placeholder="Please enter seat"
+            placeholder="Seat"
           />
-          <label htmlFor="">ARTIST</label>
+          <label>ARTIST</label>
           <input
             type="text"
             value={artist}
             name="artist"
             onChange={handleChange}
-            placeholder="Please enter artist"
+            placeholder="Artist"
           />
-          <label htmlFor="">TITLE</label>
+          <label>TITLE</label>
           <input
             type="text"
             value={title}
             name="title"
             onChange={handleChange}
-            placeholder="Please enter title"
+            placeholder="Title"
           />
-          <label htmlFor="">DATE</label>
-          <input
-            type="text"
-            value={date}
-            name="date"
-            onChange={handleChange}
-            placeholder="Please enter date"
-          />
-          <label htmlFor="">VENUE</label>
+          <label>DATE</label>
+          <input type="date" value={date} name="date" onChange={handleChange} />
+          <label>VENUE</label>
           <input
             type="text"
             value={venue}
             name="venue"
             onChange={handleChange}
-            placeholder="Please enter venue"
+            placeholder="Venue"
           />
-          <label htmlFor="">IMAGE</label>
-          <input
-            type="file"
-            name="image"
-            onChange={handleImageChange}
-            placeholder="Please enter file"
-          />
+          <label>IMAGE</label>
+          <input type="file" name="image" onChange={handleImageChange} />
           <button
             disabled={loading}
-            style={{
-              background: loading ? "rgba(21, 95,	200, 0.8)" : "#155fc8",
-            }}
+            style={{ background: loading ? "rgba(21,95,200,0.8)" : "#155fc8" }}
           >
             {loading ? "LOADING" : "CREATE"}
           </button>

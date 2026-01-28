@@ -1,3 +1,29 @@
+/* * {
+  margin: 0px !important;
+  padding: 0px !important;
+  box-sizing: border-box;
+} */
+
+#ticket-nav {
+  background-color: #1f262d;
+  color: #fff;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  position: relative;
+  font-weight: medium;
+  width: 100%;
+}
+
+#ticket-nav .icon {
+  position: absolute;
+  left: 20px;
+  font-size: 25px;
+  color: white;
+}
+
 .ticket-container {
   width: 350px;
   margin: 50px auto !important;
@@ -49,6 +75,7 @@
   left: 0px;
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
 .image-container .bg {
@@ -397,6 +424,11 @@
   padding: 50px 200px !important;
 }
 
+.ticketlist-container h2 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .ticketlist-container li {
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 5px;
@@ -463,6 +495,20 @@
 
 .clipboard button {
   background-color: #155fc8;
+}
+
+@media (max-width: 768px) {
+  .clipboard {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clipboard {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
 }
 
 @media screen and (max-width: 960px) {

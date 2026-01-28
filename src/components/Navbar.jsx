@@ -13,7 +13,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navBar">
+    <nav className="navBar" id="ticket-nav">
       <div
         className={show ? "bg-dark" : "bg-dark-hide"}
         onClick={handleShow}

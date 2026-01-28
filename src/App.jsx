@@ -4,11 +4,13 @@ import Create from "./pages/Create";
 import Login from "./pages/Login";
 import Ticket from "./pages/Ticket";
 import Tickets from "./pages/Tickets";
+import Toastify from "./components/Toastify";
 import "./App.css";
 
 function App() {
   return (
     <Router>
+      <Toastify />
       <div className="min-h-screen bg-white">
         <Routes>
           <Route path="/" element={<Home />} />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ticket from "../assets/logo.png";
+import ticket from "../assets/ticket.png";
 import { MdOutlineLocationOn, MdSearch, MdNotifications } from "react-icons/md";
 import { RiHeartsFill } from "react-icons/ri";
 import { GiTicket } from "react-icons/gi";
@@ -9,13 +9,16 @@ import { Link } from "react-router-dom";
 import { IoIosCreate } from "react-icons/io";
 import { BiLogOut } from "react-icons/bi";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SideNav = ({ show }) => {
+  const navigate = useNavigate(); // make sure this is inside your component
   const logout = () => {
-    localStorage.removeItem("user");
-    window.location.reload();
+    localStorage.removeItem("ticket-admin"); // or "user" if you used that key
+    navigate("/login"); // redirect to login page
   };
-  let user = JSON.parse(localStorage.getItem("user"));
+
+  let user = JSON.parse(localStorage.getItem("ticket-admin"));
 
   const [tick, setTick] = useState({});
 
@@ -42,40 +45,16 @@ const SideNav = ({ show }) => {
         <div className="nav-top">
           <span className="bottom">
             <img src={ticket} alt="" /> <br />
-            <Link to="/signin" style={{ textDecoration: "none" }}>
-              Sign In
-            </Link>
+            {user ? (
+              ""
+            ) : (
+              <Link to="/login" style={{ textDecoration: "none" }}>
+                Sign In
+              </Link>
+            )}
           </span>
         </div>
         <ul className="links">
-          <li>
-            <MdOutlineLocationOn />
-            <span>Unknown</span>
-          </li>
-          <li>
-            <MdSearch />
-            <span>Discover</span>
-          </li>
-          <li>
-            <RiHeartsFill />
-            <span>Favorites</span>
-          </li>
-          <li>
-            <GiTicket />
-            <Link to={`/ticket/${tick._id}`}>My Events</Link>
-          </li>
-          <li>
-            <FaMoneyBillWave />
-            <span>Sell</span>
-          </li>
-          <li>
-            <MdNotifications />
-            <span>Notifications</span>
-          </li>
-          <li>
-            <BsPersonCircle />
-            <span>My Account</span>
-          </li>
           <>
             {user ? (
               <div className="auth-links">
