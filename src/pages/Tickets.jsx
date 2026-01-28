@@ -33,7 +33,7 @@ const Tickets = () => {
     setLoading(true);
     try {
       await axios.delete(
-        `http://localhost/ticket_website_api/delete_ticket?id=${id}`,
+        `https://ticket-website-api.thegbmedia.com/delete_ticket?id=${id}`,
         config,
       );
       toast.success("TICKET DELETED SUCCESSFULLY");
@@ -49,7 +49,7 @@ const Tickets = () => {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "http://localhost/ticket_website_api/get_tickets",
+          "https://ticket-website-api.thegbmedia.com/get_tickets",
         );
         console.log(response.data);
         setTickets(response.data);

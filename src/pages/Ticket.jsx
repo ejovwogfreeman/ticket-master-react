@@ -32,7 +32,9 @@ const Ticket = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost/ticket_website_api/get_ticket?id=${params.id}`)
+      .get(
+        `https://ticket-website-api.thegbmedia.com/get_ticket?id=${params.id}`,
+      )
       .then((response) => {
         // console.log(response.data);
         setTicket(response.data);
@@ -79,7 +81,7 @@ const Ticket = () => {
                 <div className="image-container">
                   <div className="bg"></div>
                   <img
-                    src={`http://localhost/ticket_website_api/get_ticket_image?id=${ticket.id}`}
+                    src={`https://ticket-website-api.thegbmedia.com/get_ticket_image?id=${ticket.id}`}
                     alt="ticket-pic"
                   />
                   <div className="text">
@@ -124,7 +126,7 @@ const Ticket = () => {
                 <div className="image-container">
                   <div className="bg"></div>
                   <img
-                    src={`http://localhost/ticket_website_api/get_ticket_image?id=${ticket.id}`}
+                    src={`https://ticket-website-api.thegbmedia.com/get_ticket_image?id=${ticket.id}`}
                     alt="ticket-pic"
                   />
                   <div className="text">

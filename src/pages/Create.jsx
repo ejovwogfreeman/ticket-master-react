@@ -74,7 +74,7 @@ const Create = () => {
 
     try {
       await axios.post(
-        "http://localhost/ticket_website_api/create_ticket",
+        "https://ticket-website-api.thegbmedia.com/create_ticket",
         formData,
         {
           headers: {
