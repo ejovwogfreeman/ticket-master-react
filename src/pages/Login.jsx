@@ -30,7 +30,7 @@ const Login = () => {
 
     axios
       .post(
-        "https://ticket-website-api.thegbmedia.com/login",
+        "http://localhost/ticket_website_api/login",
         { username, password },
         {
           headers: {

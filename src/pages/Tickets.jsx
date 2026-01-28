@@ -64,7 +64,7 @@ const Tickets = () => {
   const findTicketById = (id) => {
     for (const ticket of tickets) {
       if (ticket.id === id) {
-        return "http://localhost:5173/ticket/" + ticket.id;
+        return "https://ticket-master-react.vercel.app/ticket/" + ticket.id;
       }
     }
     return null;
