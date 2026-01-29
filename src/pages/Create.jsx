@@ -130,7 +130,7 @@ const Create = () => {
             onChange={handleChange}
             placeholder="Seat"
           />
-          <label>ARTIST</label>
+          <label>GAME TITLE/ARTIST</label>
           <input
             type="text"
             value={artist}
