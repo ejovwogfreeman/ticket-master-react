@@ -146,8 +146,8 @@ const Create = () => {
             onChange={handleChange}
             placeholder="Title"
           />
-          <label>DATE</label>
-          <input type="date" value={date} name="date" onChange={handleChange} />
+          <label>DATE (e.g Fri Jul 29, 9:00pm)</label>
+          <input type="text" value={date} name="date" onChange={handleChange} />
           <label>VENUE</label>
           <input
             type="text"
