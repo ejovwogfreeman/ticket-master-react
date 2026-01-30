@@ -61,6 +61,16 @@ const Create = () => {
       return toast.error("PLEASE FILL ALL FIELDS");
     }
 
+    // Split row and seat by commas
+    const rowArray = row.split(",");
+    const seatArray = seat.split(",");
+
+    // Check if lengths match
+    if (rowArray.length !== seatArray.length) {
+      setLoading(false);
+      return toast.error("Number of rows must equal number of seats");
+    }
+
     const formData = new FormData();
     formData.append("type", type);
     formData.append("sec", sec);
