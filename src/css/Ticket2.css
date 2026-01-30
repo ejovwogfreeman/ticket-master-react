@@ -1,11 +1,9 @@
-/* ---------------- General Reset ---------------- */
 /* * {
-  margin: 0 !important;
-  padding: 0 !important;
+  margin: 0px !important;
+  padding: 0px !important;
   box-sizing: border-box;
 } */
 
-/* ---------------- Ticket Nav ---------------- */
 #ticket-nav {
   background-color: #1f262d;
   color: #fff;
@@ -26,7 +24,6 @@
   color: white;
 }
 
-/* ---------------- Ticket Container ---------------- */
 .ticket-container {
   width: 350px;
   margin: 50px auto !important;
@@ -35,6 +32,7 @@
 .ticket-container .tickets {
   display: flex;
   align-items: center;
+  overflow-x: ellipsis;
   overflow-x: scroll;
   padding: 20px 0px !important;
   margin: 0px 0px !important;
@@ -156,7 +154,6 @@
   cursor: pointer;
 }
 
-/* ---------------- Modal Background ---------------- */
 .bg-show {
   position: fixed;
   width: 100%;
@@ -172,19 +169,15 @@
   display: none;
 }
 
-/* ---------------- Modal Container ---------------- */
 .modal-container {
-  height: auto; /* grow with content */
-  max-height: 80vh; /* optional max height */
+  height: 480px;
   width: 100%;
   background-color: white;
   position: fixed;
   bottom: 0px;
-  z-index: 1000000;
+  z-index: 100;
   transition: 0.5s ease-in-out;
-  overflow-y: auto; /* scroll if content exceeds height */
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  z-index: 1000000;
 }
 
 .modal-container-show {
@@ -195,8 +188,7 @@
   bottom: -500px;
 }
 
-.modal-container .mod-container {
-  padding-bottom: 80px; /* space for sticky button */
+.modal-container .modal-container {
   position: relative;
 }
 
@@ -250,7 +242,6 @@
   display: flex;
   align-items: center;
 }
-
 .modal-container .floor span a {
   display: flex;
   align-items: center;
@@ -259,12 +250,9 @@
   font-weight: 600;
 }
 
-/* ---------------- Seats ---------------- */
-.modal-container .seat {
+/* .modal-container .seat {
   display: flex;
   align-items: center;
-  flex-wrap: wrap; /* allow wrapping */
-  gap: 10px;
   margin: 20px 10px !important;
 }
 
@@ -274,6 +262,24 @@
   text-align: center;
   border-radius: 10px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  margin-right: 10px;
+} */
+
+.modal-container .seat {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* ✅ allows seats to go to the next line */
+  gap: 10px; /* optional, nicer spacing between seats */
+  margin: 20px 10px !important;
+}
+
+.modal-container .seat div {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100px; /* ✅ fixed width */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  /* margin-right removed because gap handles spacing */
 }
 
 .modal-container .seat div p {
@@ -292,6 +298,7 @@
   background-color: #026cdf;
   color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -306,13 +313,13 @@
   background-color: white;
   color: white;
   border: 1px solid rgba(0, 0, 0, 0.2);
+  display: block;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
 }
 
-/* ---------------- Dots ---------------- */
 .dot {
   width: 10px;
   height: 10px;
@@ -328,7 +335,6 @@
   background-color: #333;
   margin: 3px !important;
 }
-
 .dots-container {
   display: flex;
   justify-content: center;
@@ -337,20 +343,19 @@
   margin-bottom: 20px !important;
 }
 
-/* ---------------- Scrollbar ---------------- */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 6px; /* Change the width as needed */
 }
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
+/* Hide the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
 
-/* ---------------- Transfer Button ---------------- */
 .transfer-to {
   color: #026cdf;
   cursor: pointer;
@@ -359,14 +364,6 @@
   align-items: center;
 }
 
-.modal-container .bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 20px 0px !important;
-}
-
-/* ---------------- Modal Form ---------------- */
 .modal-form {
   text-align: left;
   padding: 10px !important;
@@ -386,7 +383,7 @@
   background-color: #026cdf;
   color: white;
   padding: 10px !important;
-  margin-right: 0px !important;
+  margin-right: 10px !important;
   cursor: pointer;
   outline: none;
   border: none;
@@ -401,8 +398,7 @@
   margin-bottom: 3px !important;
 }
 
-.modal-form input,
-.modal-form textarea {
+.modal-form input {
   display: block;
   width: 100%;
   outline: none;
@@ -414,9 +410,30 @@
 
 .modal-form textarea {
   height: 100px;
+  display: block;
+  width: 100%;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 3px;
+  padding: 5px !important;
+  margin-bottom: 10px !important;
 }
 
-/* ---------------- Ticket List ---------------- */
+.modal-container .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0px !important;
+}
+
+.transfer-form-btn {
+  background-color: #026cdf;
+  color: white;
+  padding: 10px !important;
+  margin-right: 0px !important;
+  cursor: pointer;
+}
+
 .ticketlist-container {
   padding: 50px 200px !important;
 }
@@ -431,7 +448,8 @@
   border-radius: 5px;
   padding: 10px !important;
   list-style-type: none;
-  margin: 10px 0 !important;
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
 }
 
 .ticketlist-container li button {
@@ -493,7 +511,6 @@
   background-color: #155fc8;
 }
 
-/* ---------------- Responsive ---------------- */
 @media (max-width: 768px) {
   .clipboard {
     font-size: 12px;
@@ -514,6 +531,14 @@
   }
   .ticketlist-container li {
     margin-bottom: 5px !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .modal-container .imark span {
+    font-size: 40px;
+    min-width: 70px;
+    height: 70px;
   }
 }
 
