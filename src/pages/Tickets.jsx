@@ -51,8 +51,15 @@ const Tickets = () => {
         const response = await axios.get(
           "https://ticket-website-api.thegbmedia.com/get_tickets",
         );
-        console.log(response.data);
-        setTickets(response.data);
+
+        // Sort tickets by date descending (newest first)
+        const sortedTickets = response.data.sort((a, b) => {
+          // If your date is a string, convert to Date for comparison
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
+
+        setTickets(sortedTickets);
+        console.log(sortedTickets);
       } catch (error) {
         console.error("Error fetching tickets:", error);
       }
