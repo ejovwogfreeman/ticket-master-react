@@ -250,7 +250,7 @@
   font-weight: 600;
 }
 
-.modal-container .seat {
+/* .modal-container .seat {
   display: flex;
   align-items: center;
   margin: 20px 10px !important;
@@ -263,6 +263,23 @@
   border-radius: 10px;
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
   margin-right: 10px;
+} */
+
+.modal-container .seat {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap; /* ✅ allows seats to go to the next line */
+  gap: 10px; /* optional, nicer spacing between seats */
+  margin: 20px 10px !important;
+}
+
+.modal-container .seat div {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  width: 100px; /* ✅ fixed width */
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  /* margin-right removed because gap handles spacing */
 }
 
 .modal-container .seat div p {
