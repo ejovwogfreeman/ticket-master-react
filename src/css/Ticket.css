@@ -38,6 +38,7 @@
   overflow-x: scroll;
   padding: 20px 0px !important;
   margin: 0px 0px !important;
+  padding-left: 10px !important;
 }
 
 .ticket-container .ticket {
@@ -46,6 +47,9 @@
   background-color: white;
   border-radius: 15px;
   text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.01);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding-bottom: 50px !important;
 }
 
 .ticket-nav {

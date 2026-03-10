@@ -97,7 +97,7 @@ const Ticket = () => {
                       <Link to="">Ticket Details</Link>
                     </div>
                   </section>
-                  <img src={ver} alt="" width="100%" className="verified" />
+                  {/* <img src={ver} alt="" width="100%" className="verified" /> */}
                 </div>
               ))}
             </div>
