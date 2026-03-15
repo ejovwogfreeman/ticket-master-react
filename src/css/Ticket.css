@@ -165,6 +165,14 @@
   cursor: pointer;
 }
 
+.view-ticket-btn {
+  background-color: #026cdf;
+  color: white;
+  padding: 5px !important;
+  margin-right: 10px !important;
+  cursor: pointer;
+}
+
 /* .sell-btn {
   background-color: rgba(0, 0, 0, 0.2);
   color: white;

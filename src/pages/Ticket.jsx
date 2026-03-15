@@ -3,11 +3,12 @@ import "../css/Ticket.css";
 // import btn from "../assets/button-img.png";
 import ver from "../assets/verified-img.jpg";
 import { Link } from "react-router-dom";
-import { MdClose, MdQrCodeScanner } from "react-icons/md";
+import { MdClose } from "react-icons/md";
 import Modal from "../components/Modal";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import loader from "../assets/loading.gif";
+import barcode from "../assets/barcode.png";
 
 const Ticket = () => {
   const params = useParams();
@@ -90,8 +91,8 @@ const Ticket = () => {
                   <section className="bottom-section">
                     <div>
                       {/* <img src={btn} alt="button-img" width="100%" /> */}
-                      <Link to="" className="transfer-btn">
-                        <MdQrCodeScanner />
+                      <Link to="" className="view-ticket-btn">
+                        <img src={barcode} alt="" width="30px" />
                         <span>View Ticket</span>
                       </Link>
                       <Link to="">Ticket Details</Link>
