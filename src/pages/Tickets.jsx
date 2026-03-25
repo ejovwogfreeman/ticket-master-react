@@ -33,7 +33,7 @@ const Tickets = () => {
     setLoading(true);
     try {
       await axios.delete(
-        `https://ticket-website-api.thegbmedia.com/delete_ticket?id=${id}`,
+        `https://tickets.codefestuniversity.online/delete_ticket?id=${id}`,
         config,
       );
       toast.success("TICKET DELETED SUCCESSFULLY");
@@ -49,7 +49,7 @@ const Tickets = () => {
     const fetchTickets = async () => {
       try {
         const response = await axios.get(
-          "https://ticket-website-api.thegbmedia.com/get_tickets",
+          "https://tickets.codefestuniversity.online/get_tickets",
         );
 
         // Sort tickets by date descending (newest first)

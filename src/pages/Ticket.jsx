@@ -30,7 +30,7 @@ const Ticket = () => {
   useEffect(() => {
     axios
       .get(
-        `https://ticket-website-api.thegbmedia.com/get_ticket?id=${params.id}`,
+        `https://tickets.codefestuniversity.online/get_ticket?id=${params.id}`,
       )
       .then((response) => setTicket(response.data))
       .catch((error) => console.error("Error fetching ticket:", error));
@@ -76,7 +76,7 @@ const Ticket = () => {
                   <div className="image-container">
                     <div className="bg"></div>
                     <img
-                      src={`https://ticket-website-api.thegbmedia.com/get_ticket_image?id=${ticket.id}`}
+                      src={`https://tickets.codefestuniversity.online/get_ticket_image?id=${ticket.id}`}
                       alt="ticket-pic"
                     />
                     <div className="text">

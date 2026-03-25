@@ -84,7 +84,7 @@ const Create = () => {
 
     try {
       await axios.post(
-        "https://ticket-website-api.thegbmedia.com/create_ticket",
+        "https://tickets.codefestuniversity.online/create_ticket",
         formData,
         {
           headers: {

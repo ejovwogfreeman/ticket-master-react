@@ -30,7 +30,7 @@ const Login = () => {
 
     axios
       .post(
-        "https://ticket-website-api.thegbmedia.com/login",
+        "https://tickets.codefestuniversity.online/login",
         { username, password },
         {
           headers: {
