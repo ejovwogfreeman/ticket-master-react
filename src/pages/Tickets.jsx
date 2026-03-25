@@ -71,7 +71,7 @@ const Tickets = () => {
   const findTicketById = (id) => {
     for (const ticket of tickets) {
       if (ticket.id === id) {
-        return "https://ticket-master-react.vercel.app/ticket/" + ticket.id;
+        return "https://ticknova.online/ticket/" + ticket.id;
       }
     }
     return null;
